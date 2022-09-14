@@ -28,3 +28,4 @@ void UCAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 
 	//bInAim = Owner->IsInAim();
 }
+

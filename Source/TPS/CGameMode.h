@@ -13,5 +13,8 @@ UCLASS()
 class TPS_API ACGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
+
+public:
+	ACGameMode();
 	
 };

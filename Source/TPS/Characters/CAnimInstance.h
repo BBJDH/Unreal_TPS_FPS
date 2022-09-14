@@ -28,6 +28,10 @@ protected:
         float AimYaw;
 
 
+protected:
+    UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Guns")
+        FVector Rifle_LeftHandIK = FVector(-35, 15.5f, 5);
+
 public:
     virtual void NativeBeginPlay() override;
     virtual void NativeUpdateAnimation(float DeltaSeconds) override;
