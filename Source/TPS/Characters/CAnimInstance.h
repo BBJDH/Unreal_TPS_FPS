@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimInstance.h"
+#include "Weapons/CWeaponComponent.h"
 #include "CAnimInstance.generated.h"
 
 /**
@@ -30,17 +31,33 @@ protected:
     //ÃÑÀÇ IK °ª ÀúÀå
 protected:
     UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Guns")
-        FVector Rifle_LeftHandIK = FVector(-35, 15.5f, 5);
+        EWeaponType WeaponType = EWeaponType::Max;
+
+    UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Guns")
+        FVector LeftHandLocation = FVector(-35, 15.5f, 5);
     
     UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Guns")
         bool bInAim;
 
     UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Guns")
         bool bFiring;
+
+
+    UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Guns")
+        bool bUseIK;
 public:
     virtual void NativeBeginPlay() override;
     virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 
 private:
+
+    void SetPlayerState();
+    void SetWeaponState();
+
+private:
+    UFUNCTION()
+        void OnWeaponTypeChanged(EWeaponType InPrevType, EWeaponType InNewType);
+private:
     class ACPlayer* Owner;
+    class UCWeaponComponent* Weapon;
 };

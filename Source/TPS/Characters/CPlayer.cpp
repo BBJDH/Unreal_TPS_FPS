@@ -4,7 +4,7 @@
 #include "Global.h"
 
 
-//#include "Weapons/CRifle.h"
+#include "Weapons/CWeaponComponent.h"
 #include "CAnimInstance.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -19,6 +19,9 @@ ACPlayer::ACPlayer()
 	//스프링, 카메라 생성
 	CHelpers::CreateComponent<USpringArmComponent>(this, &SpringArm, "SpringArm", GetMesh());
 	CHelpers::CreateComponent<UCameraComponent>(this, &Camera, "Camera", SpringArm);
+
+	CHelpers::CreateActorComponent<UCWeaponComponent>(this, &Weapon, "Weapon");
+
 
 	//메시
 	USkeletalMesh* mesh;
@@ -97,14 +100,18 @@ void ACPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis("HorizontalLook", this, &ACPlayer::OnHorizontalLook);
 
 
-	PlayerInputComponent->BindAction("Aim", IE_Pressed, this, &ACPlayer::OnAim);
-	PlayerInputComponent->BindAction("Aim", IE_Released, this, &ACPlayer::OffAim);
+	PlayerInputComponent->BindAction("AR4", IE_Pressed, Weapon, &UCWeaponComponent::SetAR4Mode);
+	PlayerInputComponent->BindAction("AK47", IE_Pressed, Weapon, &UCWeaponComponent::SetAK47Mode);
+	PlayerInputComponent->BindAction("Pistol", IE_Pressed, Weapon, &UCWeaponComponent::SetPistolMode);
 
-	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ACPlayer::OnFire);
-	PlayerInputComponent->BindAction("Fire", IE_Released, this, &ACPlayer::OffFire);
+	PlayerInputComponent->BindAction("Aim", IE_Pressed, Weapon, &UCWeaponComponent::Begin_Aim);
+	PlayerInputComponent->BindAction("Aim", IE_Released, Weapon, &UCWeaponComponent::End_Aim);
 
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, Weapon, &UCWeaponComponent::Begin_Fire);
+	PlayerInputComponent->BindAction("Fire", IE_Released, Weapon, &UCWeaponComponent::End_Fire);
 
-	PlayerInputComponent->BindAction("AutoFire", IE_Pressed, this, &ACPlayer::OnAutoFire);
+	PlayerInputComponent->BindAction("AutoFire", IE_Pressed, Weapon, &UCWeaponComponent::ToggleAutoFire);
+	PlayerInputComponent->BindAction("Reload", IE_Pressed, Weapon, &UCWeaponComponent::Reload);
 
 
 }
@@ -140,28 +147,14 @@ void ACPlayer::OnHorizontalLook(float AxisValue)
 	AddControllerYawInput(AxisValue);
 }
 
-
-void ACPlayer::OnAim()
+void ACPlayer::UseControlRotation()
 {
-	//Rifle->OnAim();
+	bUseControllerRotationYaw = true;
+	GetCharacterMovement()->bOrientRotationToMovement = false;
 }
 
-void ACPlayer::OffAim()
+void ACPlayer::NotUseControlRotation()
 {
-	//Rifle->OffAim();
-}
-
-void ACPlayer::OnFire()
-{
-	//Rifle->Begin_Fire();
-}
-
-void ACPlayer::OffFire()
-{
-	//Rifle->End_Fire();
-}
-
-void ACPlayer::OnAutoFire()
-{
-	//BRifle->ToggleAutoFire();
+	bUseControllerRotationYaw = false;
+	GetCharacterMovement()->bOrientRotationToMovement = true;
 }

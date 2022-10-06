@@ -4,7 +4,6 @@
 #include "Global.h"
 #include "GameFramework/Character.h"
 #include "Characters/CPlayer.h"
-//#include "Weapons/CRifle.h"
 #include "Misc/CString.h"
 
 void UCAnimInstance::NativeBeginPlay()
@@ -13,6 +12,10 @@ void UCAnimInstance::NativeBeginPlay()
 
 	Owner = Cast<ACPlayer>(TryGetPawnOwner());
 	CheckNull(Owner);
+
+	Weapon = CHelpers::GetComponent<UCWeaponComponent>(Owner);
+	if (!!Weapon)
+		Weapon->OnWeaponTypeChange.AddDynamic(this, &UCAnimInstance::OnWeaponTypeChanged);
 }
 
 void UCAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
@@ -23,18 +26,33 @@ void UCAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	Speed = Owner->GetVelocity().Size2D();
 	Direction = CalculateDirection(Owner->GetVelocity(), Owner->GetActorRotation());
 
-	AimPitch = Owner->GetAimPitch();
-	AimYaw = Owner->GetAimYaw();
+	//AimYaw = Owner->GetAimYaw();
 
-	//bInAim = Owner->IsInAim();
-	//ACRifle* rifle = Owner->GetRifle();
-	//if (!!rifle)
-	//{
-	//	bInAim = rifle->IsInAim();
-	//	bFiring = rifle->IsFiring();
-	//}
+
 
 	FString Str{};
 	
 }
 
+void UCAnimInstance::SetPlayerState()
+{
+	ACPlayer* player = Cast<ACPlayer>(Owner);
+	CheckNull(player);
+
+	AimPitch = Owner->GetAimPitch();
+
+}
+void UCAnimInstance::SetWeaponState()
+{
+	bInAim = Weapon->IsInAim();
+	bFiring = Weapon->IsFiring();
+	LeftHandLocation = Weapon->GetLeftHandLocation();
+
+	bUseIK |= WeaponType != EWeaponType::Max;
+
+}
+
+void UCAnimInstance::OnWeaponTypeChanged(EWeaponType InPrevType, EWeaponType InNewType)
+{
+	WeaponType = InNewType;
+}

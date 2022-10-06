@@ -11,8 +11,6 @@ class TPS_API ACPlayer : public ACharacter
 	GENERATED_BODY()
 
 
-
-
 		//에임 오프셋에 사용
 	/*
 	어떤 애니메이션을 쓰던지 끊기는 상황을 대비하여
@@ -53,6 +51,9 @@ private:
 	UPROPERTY(VisibleDefaultsOnly)
 		class UCameraComponent* Camera;
 
+	UPROPERTY(VisibleDefaultsOnly)
+		class UCWeaponComponent* Weapon;
+
 public:
 
 	//FORCEINLINE class ACRifle* GetRifle() { return Rifle; }
@@ -77,14 +78,10 @@ private:
 	void OnVerticalLook(float AxisValue);
 	void OnHorizontalLook(float AxisValue);
 
-	void OnAim();
-	void OffAim();
 
-	void OnFire();
-	void OffFire();
-
-	void OnAutoFire();
-
+public:
+	void UseControlRotation();
+	void NotUseControlRotation();
 
 	//에임오프셋 2D라면 두가지 (AimYaw 까지) 사용
 private:
