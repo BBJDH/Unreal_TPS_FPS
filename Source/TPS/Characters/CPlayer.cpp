@@ -4,7 +4,7 @@
 #include "Global.h"
 
 
-#include "Weapons/CRifle.h"
+//#include "Weapons/CRifle.h"
 #include "CAnimInstance.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -54,17 +54,17 @@ void ACPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (!!RifleClass)
-	{
-		FActorSpawnParameters params;
-		params.Owner = this;
+	//if (!!RifleClass)
+	//{
+	//	FActorSpawnParameters params;
+	//	params.Owner = this;
 
 
-		//지정된 타입으로 총 생성
-		Rifle = GetWorld()->SpawnActor<ACRifle>(RifleClass, params);
-		Rifle->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, false), "Rifle_RightHand");
+	//	//지정된 타입으로 총 생성
+	//	Rifle = GetWorld()->SpawnActor<ACRifle>(RifleClass, params);
+	//	Rifle->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, false), "Rifle_RightHand");
 
-	}
+	//}
 
 }
 
@@ -101,6 +101,12 @@ void ACPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAction("Aim", IE_Released, this, &ACPlayer::OffAim);
 
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ACPlayer::OnFire);
+	PlayerInputComponent->BindAction("Fire", IE_Released, this, &ACPlayer::OffFire);
+
+
+	PlayerInputComponent->BindAction("AutoFire", IE_Pressed, this, &ACPlayer::OnAutoFire);
+
+
 }
 
 void ACPlayer::OnMoveForward(float AxisValue)
@@ -121,6 +127,11 @@ void ACPlayer::OnMoveRight(float AxisValue)
 
 void ACPlayer::OnVerticalLook(float AxisValue)
 {
+	FRotator controlRotation = GetControlRotation().GetNormalized();
+	//CLog::Log("dd");
+	float limitPitch = controlRotation.Pitch;
+
+	CheckTrue(limitPitch > LimitPitchAngle);
 	AddControllerPitchInput(AxisValue);
 }
 
@@ -132,15 +143,25 @@ void ACPlayer::OnHorizontalLook(float AxisValue)
 
 void ACPlayer::OnAim()
 {
-	Rifle->OnAim();
+	//Rifle->OnAim();
 }
 
 void ACPlayer::OffAim()
 {
-	Rifle->OffAim();
+	//Rifle->OffAim();
 }
 
 void ACPlayer::OnFire()
 {
-	Rifle->Firing();
+	//Rifle->Begin_Fire();
+}
+
+void ACPlayer::OffFire()
+{
+	//Rifle->End_Fire();
+}
+
+void ACPlayer::OnAutoFire()
+{
+	//BRifle->ToggleAutoFire();
 }

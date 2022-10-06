@@ -11,10 +11,7 @@ class TPS_API ACPlayer : public ACharacter
 	GENERATED_BODY()
 
 
-		//플레이어가 들고다딜 총 타입 지정
-private:
-	UPROPERTY(EditDefaultsOnly, Category = "Guns")
-		TSubclassOf<class ACRifle> RifleClass;
+
 
 		//에임 오프셋에 사용
 	/*
@@ -28,6 +25,12 @@ private:
 	때문에 DeltaTIme을 이용하여 보간 처리
 	Tick에서 렌더링을 제어한다면 꼭 DeltaTIme을 사용
 	*/
+
+
+	//플레이어가 들고다딜 총 타입 지정
+//private:
+//	UPROPERTY(EditDefaultsOnly, Category = "Guns")
+//		TSubclassOf<class ACWeapon> RifleClass;
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Camera")
 		float ViewInterpSpeed = 25;
@@ -40,6 +43,9 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Camera")
 		FVector2D YawRange = FVector2D(-90, +90);
 
+	UPROPERTY(EditDefaultsOnly, Category = "Camera")
+		float LimitPitchAngle = 40;	//최대 누적 반동각
+
 private:
 	UPROPERTY(VisibleDefaultsOnly)
 		class USpringArmComponent* SpringArm;
@@ -48,6 +54,9 @@ private:
 		class UCameraComponent* Camera;
 
 public:
+
+	//FORCEINLINE class ACRifle* GetRifle() { return Rifle; }
+
 	FORCEINLINE float GetAimPitch() { return AimPitch; }
 	FORCEINLINE float GetAimYaw() { return AimYaw; }
 
@@ -72,6 +81,10 @@ private:
 	void OffAim();
 
 	void OnFire();
+	void OffFire();
+
+	void OnAutoFire();
+
 
 	//에임오프셋 2D라면 두가지 (AimYaw 까지) 사용
 private:
@@ -80,5 +93,5 @@ private:
 
 	//플레이어가 들고다닐 라이플 포인터(하위 Rifle)
 private:
-	class ACRifle* Rifle;
+	//class ACRifle* Rifle;
 };

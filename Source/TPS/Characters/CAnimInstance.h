@@ -27,11 +27,16 @@ protected:
     UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Character")
         float AimYaw;
 
-
+    //총의 IK 값 저장
 protected:
     UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Guns")
         FVector Rifle_LeftHandIK = FVector(-35, 15.5f, 5);
+    
+    UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Guns")
+        bool bInAim;
 
+    UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Guns")
+        bool bFiring;
 public:
     virtual void NativeBeginPlay() override;
     virtual void NativeUpdateAnimation(float DeltaSeconds) override;
