@@ -1,11 +1,11 @@
 #include "CAnimNotifyState_Equip.h"
 #include "Global.h"
 #include "Characters/CPlayer.h"
-//#include "Weapons/CRifle.h"
+#include "Weapons/CWeaponComponent.h"
 
 FString UCAnimNotifyState_Equip::GetNotifyName_Implementation() const
 {
-	return "Reload";
+	return "Equip";
 }
 
 void UCAnimNotifyState_Equip::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, float TotalDuration)
@@ -17,7 +17,16 @@ void UCAnimNotifyState_Equip::NotifyBegin(USkeletalMeshComponent* MeshComp, UAni
 	ACPlayer* player = Cast<ACPlayer>(MeshComp->GetOwner());
 	CheckNull(player);
 
-	//player->GetRifle()->Begin_Reload();
+	CHelpers::GetComponent<UCWeaponComponent>(player);
+	CheckNull(player);
+
+
+	UCWeaponComponent* weapon = CHelpers::GetComponent<UCWeaponComponent>(MeshComp->GetOwner());
+	CheckNull(weapon);
+
+
+	weapon->Begin_Equip();
+
 }
 
 void UCAnimNotifyState_Equip::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation)
@@ -29,5 +38,11 @@ void UCAnimNotifyState_Equip::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimS
 	ACPlayer* player = Cast<ACPlayer>(MeshComp->GetOwner());
 	CheckNull(player);
 
-	//player->GetRifle()->End_Reload();
+
+	UCWeaponComponent* weapon = CHelpers::GetComponent<UCWeaponComponent>(MeshComp->GetOwner());
+	CheckNull(weapon);
+
+
+
+	weapon->End_Equip();
 }

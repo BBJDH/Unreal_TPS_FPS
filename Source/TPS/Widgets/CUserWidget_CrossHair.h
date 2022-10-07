@@ -13,7 +13,7 @@ class TPS_API UCUserWidget_CrossHair : public UUserWidget
 
 public:
 	//비율, 벌어지는 최대값, 벌어지는 속도, 
-	void UpdateSpreadRange(float InAmount, float InInterpSpeed, float InMaxRange);
+	void UpdateSpreadRange(float InRadius, float InMaxRadius);
 
 protected:
 	virtual void NativeOnInitialized() override;
@@ -33,7 +33,7 @@ private:
 
 
 private:
-	float Amount;
-	float InterpSpeed;
-	float MaxRange;
+	//0~1
+	float Radius;
+	float MaxRadius;
 };

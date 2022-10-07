@@ -33,7 +33,7 @@ void UCWeaponComponent::BeginPlay()
 
 	for (TSubclassOf<ACWeapon> weaponClass : WeaponClasses)
 	{
-		if (!weaponClass)
+		if (!!weaponClass)
 		{
 			ACWeapon* weapon = Owner->GetWorld()->SpawnActor<ACWeapon>(weaponClass, params);
 			Weapons.Add(weapon);
@@ -93,6 +93,8 @@ void UCWeaponComponent::SetUnarmedMode()
 
 	Owner->NotUseControlRotation();
 
+	HUD->SetVisibility(ESlateVisibility::Hidden);
+
 }
 void UCWeaponComponent::SetAR4Mode()
 {
@@ -117,12 +119,11 @@ void UCWeaponComponent::SetMode(EWeaponType InType)
 
 		return;
 	}
-	else if (IsUnarmedMode())
+	else if (IsUnarmedMode()==false)
 	{
 		CheckFalse(GetCurrWeapon()->CanUnequip());
 
 		GetCurrWeapon()->Unequip();
-
 
 	}
 
@@ -136,6 +137,7 @@ void UCWeaponComponent::SetMode(EWeaponType InType)
 
 
 	ChangeType(InType);
+	HUD->SetVisibility(ESlateVisibility::Visible);
 
 
 }

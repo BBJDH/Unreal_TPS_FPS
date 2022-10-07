@@ -54,6 +54,13 @@ protected:
 		FVector LeftHandLocation;
 
 
+	UPROPERTY(EditDefaultsOnly, Category = "Equip")
+		FName HolsterSocketName;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Equip")
+		FName RightHandSocketName;
+
+
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Aiming")
 		class UCurveFloat* AimCurve;
@@ -104,27 +111,22 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Fire")
 		TSubclassOf<class UMatineeCameraShake> CameraShakeClass;
 	UPROPERTY(EditDefaultsOnly, Category = "Fire")
-		float ConeAngle = 1.5f;
+		float AutoFireInterval = 0.10f;
 
-	//UPROPERTY(EditDefaultsOnly, Category = "Fire")
-	//	bool bAvailableAutoFire;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Fire")
-		float AutoFireInterval = 0.15f;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Fire")
-		float PitchRate = 1.0f;		//반동 속도
-
-	UPROPERTY(EditDefaultsOnly, Category = "Fire")
-		float LimitPitchRate = 0.5f;	//최대 누적 반동각
+protected:
+	UPROPERTY(EditDefaultsOnly, Category = "Recoil")
+		float RecoilAngle = 0.75f;
 
 
+	UPROPERTY(EditDefaultsOnly, Category = "Recoil")
+		float RecoilRate = 0.1f;		//반동 정도
 
-	UPROPERTY(EditDefaultsOnly, Category = "Fire")
-		float SpreadInterpSpeed = 20.0f;
+	//벌어질 속도
+	UPROPERTY(EditDefaultsOnly, Category = "Recoil")
+		float SpreadSpeed = 1.0f;	
 
-	UPROPERTY(EditDefaultsOnly, Category = "Fire")
-		float MaxSpreadRange = 2.0f;
+	UPROPERTY(EditDefaultsOnly, Category = "Recoil")
+		float MaxSpreadAlignment = 2.0f;
 
 
 	UPROPERTY(EditDefaultsOnly, Category = "Trace")
@@ -240,8 +242,8 @@ private:
 	FTimerHandle AutoFireHandle;
 
 private:
-	float CurrPitchRate;
-	float LastAddPitchRate;
+	float CurrSpreadRadius;
+	float LastAddSpreadTime;
 
 private:
 	uint8 CurrMagazineCount;

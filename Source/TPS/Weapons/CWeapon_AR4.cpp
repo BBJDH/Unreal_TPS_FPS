@@ -46,21 +46,10 @@ ACWeapon_AR4::ACWeapon_AR4()
 	CHelpers::GetAsset<UAnimMontage>(&ReloadMontage,"AnimMontage'/Game/Character/Animations/Rifle_Reload_AR4_Montage.Rifle_Reload_AR4_Montage'");
 	
 	CHelpers::GetAsset<UAnimMontage>(&EquipMontage,"AnimMontage'/Game/Character/Animations/Rifle_Equip_AR4_Montage.Rifle_Equip_AR4_Montage'");
+
+	HolsterSocketName = "Rifle_AR4_Holster";
+	RightHandSocketName = "Rifle_AR4_RightHand";
+
 }
 
 
-
-//if (!!HUDClass)
-//{
-//	
-//	HUD = CreateWidget<UCUserWidget_HUD, APlayerController>
-//		(
-//			Owner->GetController<APlayerController>(),
-//			HUDClass									//생성할 타입
-//		);
-//	HUD->AddToViewport();
-//	HUD->UpdateMagazine(CurrMagazineCount, MaxMagazineCount);
-
-//	if (bAutoFire)
-//		HUD->OnAutoFire();
-//}

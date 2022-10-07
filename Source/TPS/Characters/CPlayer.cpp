@@ -11,6 +11,9 @@
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "Components/StaticMeshComponent.h"
+
+
 
 ACPlayer::ACPlayer()
 {
@@ -19,6 +22,10 @@ ACPlayer::ACPlayer()
 	//스프링, 카메라 생성
 	CHelpers::CreateComponent<USpringArmComponent>(this, &SpringArm, "SpringArm", GetMesh());
 	CHelpers::CreateComponent<UCameraComponent>(this, &Camera, "Camera", SpringArm);
+
+	CHelpers::CreateComponent<USkeletalMeshComponent>(this, &Arms, "Arms", Camera);
+	CHelpers::CreateComponent<UStaticMeshComponent>(this, &Backpack, "Backpack", GetMesh(), "Backpack");
+
 
 	CHelpers::CreateActorComponent<UCWeaponComponent>(this, &Weapon, "Weapon");
 
@@ -51,23 +58,30 @@ ACPlayer::ACPlayer()
 	//카메라
 	Camera->SetRelativeLocation(FVector(-30, 0, 0));
 	Camera->bUsePawnControlRotation = false;		//지금은 의미없음
+
+
+
+	CHelpers::GetAsset<USkeletalMesh>(&mesh, "SkeletalMesh'/Game/Character_Arms/Mesh/SK_Mannequin_Arms.SK_Mannequin_Arms'");
+	Arms->SetSkeletalMesh(mesh);
+	//임의값
+	Arms->SetRelativeLocation(FVector(-14.25f, -5.88f, -156.9f));
+	Arms->SetRelativeRotation(FRotator(-0.5f, -11.85f, -1.2f));
+	Arms->SetVisibility(false);
+
+	UStaticMesh* staticMesh;
+	CHelpers::GetAsset<UStaticMesh>(&staticMesh, "StaticMesh'/Game/Weapons/Backpack/Backpack.Backpack'");
+	Backpack->SetStaticMesh(staticMesh);
 }
 
 void ACPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//if (!!RifleClass)
-	//{
-	//	FActorSpawnParameters params;
-	//	params.Owner = this;
+	NotUseControlRotation();
 
-
-	//	//지정된 타입으로 총 생성
-	//	Rifle = GetWorld()->SpawnActor<ACRifle>(RifleClass, params);
-	//	Rifle->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, false), "Rifle_RightHand");
-
-	//}
+	APlayerCameraManager* cameraMgr = GetController<APlayerController>()->PlayerCameraManager;
+	cameraMgr->ViewPitchMin = PitchRange.X;
+	cameraMgr->ViewPitchMax = PitchRange.Y;
 
 }
 

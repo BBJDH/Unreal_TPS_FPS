@@ -27,11 +27,9 @@ void UCAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	Direction = CalculateDirection(Owner->GetVelocity(), Owner->GetActorRotation());
 
 	//AimYaw = Owner->GetAimYaw();
+	SetPlayerState();
+	SetWeaponState();
 
-
-
-	FString Str{};
-	
 }
 
 void UCAnimInstance::SetPlayerState()

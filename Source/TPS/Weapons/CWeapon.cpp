@@ -98,9 +98,14 @@ void ACWeapon::BeginPlay()
 				CrossHairClass									//생성할 타입
 				);
 		CrossHair->AddToViewport();								//위젯 뷰포트에 보여지도록
+		CrossHair->SetVisibility(ESlateVisibility::Hidden);
 	}
 
 	CurrMagazineCount = MaxMagazineCount;
+
+	//장착
+	if (HolsterSocketName.IsValid())
+		AttachToComponent(Owner->GetMesh(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, true), HolsterSocketName);
 
 	//UpdateSpreadRange();
 }
@@ -110,9 +115,15 @@ void ACWeapon::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 
-	if (LastAddPitchRate >= 0 && GetWorld()->GetTimeSeconds() - LastAddPitchRate >= 0.5f)
+	if (LastAddSpreadTime >= 0.0f)
 	{
-		CurrPitchRate = 0.0f;
+		if (GetWorld()->GetTimeSeconds() - LastAddSpreadTime >= AutoFireInterval + 0.25f)
+		{
+			CurrSpreadRadius = 0;
+			LastAddSpreadTime = 0;
+
+			CrossHair->UpdateSpreadRange(CurrSpreadRadius, MaxSpreadAlignment);
+		}
 	}
 
 }
@@ -134,10 +145,14 @@ void ACWeapon::Equip()
 	bEquipping = true;
 	if (!!EquipMontage)
 		Owner->PlayAnimMontage(EquipMontage, EquipMontage_PlayRate);
+
+	if (!!CrossHair)
+		CrossHair->SetVisibility(ESlateVisibility::Visible);
 }
 void ACWeapon::Begin_Equip()
 {
-
+	if (RightHandSocketName.IsValid())
+		AttachToComponent(Owner->GetMesh(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, true), RightHandSocketName);
 
 }
 void ACWeapon::End_Equip() 
@@ -164,8 +179,11 @@ void ACWeapon::Unequip()
 {
 	End_Aim();
 	End_Fire();
-
+	if (HolsterSocketName.IsValid())
+		AttachToComponent(Owner->GetMesh(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, true), HolsterSocketName);
 	//AttachToComponent(Owner->GetMesh(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, true), HolsterSocketName);
+	if(!!CrossHair)
+		CrossHair->SetVisibility(ESlateVisibility::Hidden);
 }
 
 bool ACWeapon::CanAim()
@@ -222,10 +240,11 @@ void ACWeapon::OnAiming(float Output)
 
 bool ACWeapon::CanFire()
 {
+	//안되는 상황을 모두 or연산하고 마지막에 뒤집음
 	bool b = false;
 	b |= bEquipping;
 	b |= bReload;
-	b |= bInAim;
+	b |= bFiring;
 
 
 	return !b;
@@ -265,7 +284,7 @@ void ACWeapon::OnFiring()
 
 
 	//랜덤 탄착군 생성
-	direction = UKismetMathLibrary::RandomUnitVectorInConeInDegrees(direction, ConeAngle);
+	direction = UKismetMathLibrary::RandomUnitVectorInConeInDegrees(direction, RecoilAngle);
 
 	FVector end = transform.GetLocation() + direction * HitDistance;
 
@@ -293,10 +312,6 @@ void ACWeapon::OnFiring()
 		//CLog::Print(hitResult.GetActor()->GetName());
 		FRotator rotator = hitResult.ImpactNormal.Rotation();
 
-
-
-
-
 		if (!!HitDecal)
 		{
 			UDecalComponent* decal = UGameplayStatics::SpawnDecalAtLocation
@@ -309,7 +324,6 @@ void ACWeapon::OnFiring()
 				10
 			);
 			decal->SetFadeScreenSize(0);	//LOD 끄기 (화면사이즈에 대해 LOD를 잡으라는 뜻, 화면사이즈를 0으로 잡음)
-
 		}
 		if (!!HitParticle)
 		{
@@ -346,6 +360,8 @@ void ACWeapon::OnFiring()
 		bullet->Shoot(direction);
 	}
 
+	Owner->AddControllerPitchInput(-RecoilRate * UKismetMathLibrary::RandomFloatInRange(0.8f, 1.2f));
+
 	if (!!CameraShakeClass)
 	{
 		APlayerController* controller = Owner->GetController<APlayerController>();
@@ -358,24 +374,23 @@ void ACWeapon::OnFiring()
 
 
 
-	if (CurrPitchRate <= LimitPitchRate)
+	if (CurrSpreadRadius <= 1.0f)
 	{
-		CurrPitchRate += PitchRate * GetWorld()->GetDeltaSeconds();
-		Owner->AddControllerPitchInput(-CurrPitchRate);
+		CurrSpreadRadius += SpreadSpeed * GetWorld()->GetDeltaSeconds();
 
+		CrossHair->UpdateSpreadRange(CurrSpreadRadius, MaxSpreadAlignment);
 	}
+	LastAddSpreadTime = GetWorld()->GetTimeSeconds();
 
 
 	//Timer는 쓰레드 안에서 동작시키면 안된다 별도의 쓰레드로 작성시켜야함
-	LastAddPitchRate = GetWorld()->GetTimeSeconds();
+	//LastAddPitchRate = GetWorld()->GetTimeSeconds();
 
 	CurrMagazineCount--;
 
 
 	if (CurrMagazineCount <= 0)
 		Reload();
-
-
 
 }
 
@@ -403,8 +418,6 @@ void ACWeapon::Reload()
 	{
 		Owner->PlayAnimMontage(ReloadMontage);
 	}
-
-
 }
 
 

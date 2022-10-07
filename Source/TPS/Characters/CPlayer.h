@@ -25,17 +25,14 @@ class TPS_API ACPlayer : public ACharacter
 	*/
 
 
-	//플레이어가 들고다딜 총 타입 지정
-//private:
-//	UPROPERTY(EditDefaultsOnly, Category = "Guns")
-//		TSubclassOf<class ACWeapon> RifleClass;
+
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Camera")
 		float ViewInterpSpeed = 25;
 
 	//위아래 각도 제한
 	UPROPERTY(EditDefaultsOnly, Category = "Camera")
-		FVector2D PitchRange = FVector2D(-75, +75);
+		FVector2D PitchRange = FVector2D(-75, +40);
 
 	//좌우 각도 제한
 	UPROPERTY(EditDefaultsOnly, Category = "Camera")
@@ -51,12 +48,19 @@ private:
 	UPROPERTY(VisibleDefaultsOnly)
 		class UCameraComponent* Camera;
 
+	//1인칭
+	UPROPERTY(VisibleDefaultsOnly)
+		class USkeletalMeshComponent* Arms;
+
+	UPROPERTY(VisibleDefaultsOnly)
+		class UStaticMeshComponent* Backpack;
+
 	UPROPERTY(VisibleDefaultsOnly)
 		class UCWeaponComponent* Weapon;
 
 public:
 
-	//FORCEINLINE class ACRifle* GetRifle() { return Rifle; }
+
 
 	FORCEINLINE float GetAimPitch() { return AimPitch; }
 	FORCEINLINE float GetAimYaw() { return AimYaw; }
@@ -89,6 +93,5 @@ private:
 	float AimPitch;
 
 	//플레이어가 들고다닐 라이플 포인터(하위 Rifle)
-private:
-	//class ACRifle* Rifle;
+
 };

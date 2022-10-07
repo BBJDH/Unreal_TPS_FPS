@@ -7,11 +7,10 @@
 #include "Components/CanvasPanelSlot.h"	//슬롯으로 매핑하기 위한 헤더
 #include "Components/Border.h"	//크로스 헤어 위젯의 보더를 가져올 예정
 
-void UCUserWidget_CrossHair::UpdateSpreadRange(float InAmount, float InInterpSpeed, float InMaxRange)
+void UCUserWidget_CrossHair::UpdateSpreadRange(float InRadius, float InMaxRadius)
 {
-	Amount = InAmount;
-	InterpSpeed = InInterpSpeed;
-	MaxRange = InMaxRange;
+	Radius = InRadius;
+	MaxRadius = InMaxRadius;
 }
 
 void UCUserWidget_CrossHair::NativeOnInitialized()
@@ -57,48 +56,47 @@ void UCUserWidget_CrossHair::NativeTick(const FGeometry& MyGeometry, float InDel
 		case EDirection::Top:
 		{
 			minimum = DefaultAlignments[i].Y;
-			maximum = DefaultAlignments[i].Y + MaxRange;
+			maximum = DefaultAlignments[i].Y + MaxRadius;
 		}
 		break;
 
 		case EDirection::Bottom:
 		{
 			minimum = DefaultAlignments[i].Y;
-			maximum = DefaultAlignments[i].Y - MaxRange;
+			maximum = DefaultAlignments[i].Y - MaxRadius;
 		}
 		break;
 
 		case EDirection::Left:
 		{
 			minimum = DefaultAlignments[i].X;
-			maximum = DefaultAlignments[i].X + MaxRange;
+			maximum = DefaultAlignments[i].X + MaxRadius;
 		}
 		break;
 
 		case EDirection::Right:
 		{
 			minimum = DefaultAlignments[i].X;
-			maximum = DefaultAlignments[i].X - MaxRange;
+			maximum = DefaultAlignments[i].X - MaxRadius;
 		}
 		break;
 		}
 
 		//들어온값만큼 확산
-		float value = FMath::Lerp(minimum,maximum,Amount);
-		//시간보간
-		float spread = FMath::FInterpTo(value,maximum,InDeltaTime,InterpSpeed);
+		float value = FMath::Lerp(minimum,maximum, Radius);
+
 
 
 		switch ((EDirection)i)
 		{
 		case EDirection::Top:
 		case EDirection::Bottom:
-			slot->SetAlignment(FVector2D(DefaultAlignments[i].X, spread));
+			slot->SetAlignment(FVector2D(DefaultAlignments[i].X, value));
 			break;
 
 		case EDirection::Left:
 		case EDirection::Right:
-			slot->SetAlignment(FVector2D(spread, DefaultAlignments[i].Y));
+			slot->SetAlignment(FVector2D(value, DefaultAlignments[i].Y));
 			break;
 		}
 	}
