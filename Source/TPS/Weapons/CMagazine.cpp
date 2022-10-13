@@ -9,14 +9,12 @@ ACMagazine::ACMagazine()
 {
 
 	//StaticMesh'/Game/Weapons/Meshes/Ka47/SM_KA47_Mag.SM_KA47_Mag'
-	CHelpers::CreateComponent<UStaticMeshComponent>(this, &Mesh, "Mesh");
-
-	UStaticMesh* mesh;
-	CHelpers::GetAsset<UStaticMesh>(&mesh, "StaticMesh'/Game/Weapons/Meshes/Ka47/SM_KA47_Mag.SM_KA47_Mag'");
-	Mesh->SetStaticMesh(mesh);
-	
+	CHelpers::CreateComponent<USceneComponent>(this, &Root, "Root");
+	CHelpers::CreateComponent<UStaticMeshComponent>(this, &Mesh, "Mesh", Root);
+	CHelpers::CreateComponent<UStaticMeshComponent>(this, &Mesh_Empty, "Mesh_Empty", Root);
 
 	Mesh->SetCollisionProfileName("Magazine");
+	Mesh_Empty->SetCollisionProfileName("Magazine");
 
 
 }
@@ -24,11 +22,18 @@ ACMagazine::ACMagazine()
 void ACMagazine::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	if (bEject == false)
+	{
+		Mesh->SetVisibility(true);
+		Mesh_Empty->SetVisibility(false);
+	}
 }
 
 
-void ACMagazine::EnablePhysics() 
+void ACMagazine::Eject()
 {
-	Mesh->SetSimulatePhysics(true);
+	bEject = true;
+
+	Mesh->SetVisibility(false);
+	Mesh_Empty->SetSimulatePhysics(true);
 }

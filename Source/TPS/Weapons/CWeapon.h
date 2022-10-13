@@ -48,7 +48,7 @@ protected:
 		class UAnimMontage* EquipMontage;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Equip")
-		float EquipMontage_PlayRate =1;
+		float EquipMontage_PlayRate =1.5f;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Equip")
 		FVector LeftHandLocation;
@@ -57,7 +57,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Equip")
 		FName HolsterSocketName;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Equip")
+	UPROPERTY(EditAnyWhere, Category = "Equip")
 		FName RightHandSocketName;
 
 
@@ -184,16 +184,16 @@ public:
 public:
 	bool CanEquip();
 	void Equip();
-	void Begin_Equip();
-	void End_Equip();
+	virtual void Begin_Equip();
+	virtual void End_Equip();
 
 	bool CanUnequip();
 	void Unequip();
 
 public:
 	bool CanAim();
-	void Begin_Aim();
-	void End_Aim();
+	virtual void Begin_Aim();
+	virtual void End_Aim();
 
 public:
 	bool CanFire();
@@ -224,7 +224,7 @@ private:
 	UFUNCTION()
 		void OnAiming(float Output);
 
-private:
+protected:
 	class ACPlayer* Owner;
 
 

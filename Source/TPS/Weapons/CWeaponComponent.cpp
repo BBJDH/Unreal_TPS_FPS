@@ -11,10 +11,7 @@ UCWeaponComponent::UCWeaponComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
 
-
 	CHelpers::GetClass<UCUserWidget_HUD>(&HUDClass,"WidgetBlueprint'/Game/Widgets/WB_HUD.WB_HUD_C'");
-
-	
 
 }
 
@@ -37,8 +34,6 @@ void UCWeaponComponent::BeginPlay()
 		{
 			ACWeapon* weapon = Owner->GetWorld()->SpawnActor<ACWeapon>(weaponClass, params);
 			Weapons.Add(weapon);
-
-
 		}
 	}
 
@@ -48,6 +43,9 @@ void UCWeaponComponent::BeginPlay()
 		HUD->AddToViewport();
 		HUD->SetVisibility(ESlateVisibility::Hidden);
 	}
+
+	OnWeaponAim_Arms_Begin.AddDynamic(this, &UCWeaponComponent::On_Begin_Aim);
+	OnWeaponAim_Arms_End.AddDynamic(this, &UCWeaponComponent::On_End_Aim);
 }
 
 
@@ -251,4 +249,21 @@ void UCWeaponComponent::End_Reload()
 {
 	CheckNull(GetCurrWeapon());
 	GetCurrWeapon()->End_Reload();
+}
+
+void UCWeaponComponent::On_Begin_Aim(class ACWeapon* InThisObject)
+{
+	for (ACWeapon* weapon : Weapons)
+	{
+		if (weapon == InThisObject)
+			continue;
+		weapon->SetHidden(true);
+	}
+}
+void UCWeaponComponent::On_End_Aim()
+{
+	for (ACWeapon* weapon : Weapons)
+	{
+		weapon->SetHidden(false);
+	}
 }

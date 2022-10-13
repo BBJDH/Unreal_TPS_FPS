@@ -12,8 +12,9 @@ enum class EWeaponType: uint8
 	AR4,AK47,Pistol, Max,
 };
 
-
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FWeaponTypeChanged, EWeaponType, InPrevType, EWeaponType, InNewType);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FWeaponAim_Arms_Begin, class ACWeapon*, InThisObject);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FWeaponAim_Arms_End);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class TPS_API UCWeaponComponent : public UActorComponent
@@ -54,11 +55,9 @@ public:
 	void SetAK47Mode();
 	void SetPistolMode();
 
-
 private:
 	void SetMode(EWeaponType InType);
 	void ChangeType(EWeaponType InType);
-
 
 public:
 	bool IsInAim();
@@ -83,9 +82,20 @@ public:
 	void Load_Magazine();
 	void End_Reload();
 
+private:
+	UFUNCTION()
+	void On_Begin_Aim(class ACWeapon* InThisObject);
+	UFUNCTION()
+
+	void On_End_Aim();
+
+
+
 public:
 	//델리게이트
 	FWeaponTypeChanged OnWeaponTypeChange;
+	FWeaponAim_Arms_Begin OnWeaponAim_Arms_Begin;
+	FWeaponAim_Arms_End OnWeaponAim_Arms_End;
 
 public:
 	//무기 생성 목록

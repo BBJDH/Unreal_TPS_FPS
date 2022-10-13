@@ -46,7 +46,7 @@ void UCAnimInstance::SetWeaponState()
 	bFiring = Weapon->IsFiring();
 	LeftHandLocation = Weapon->GetLeftHandLocation();
 
-	bUseIK |= WeaponType != EWeaponType::Max;
+	bUseIK = WeaponType != EWeaponType::Max;
 
 }
 

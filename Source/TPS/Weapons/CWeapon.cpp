@@ -423,13 +423,14 @@ void ACWeapon::Reload()
 
 void ACWeapon::Eject_Magazine()
 {
-	Mesh->HideBoneByName(MagazineBoneName, PBO_None);
+	if(MagazineBoneName.IsValid())
+		Mesh->HideBoneByName(MagazineBoneName, PBO_None);
 
 	CheckNull(MagazineClass);
 
 	FTransform transform = Mesh->GetSocketTransform(MagazineBoneName);
 	ACMagazine* magazine = GetWorld()->SpawnActorDeferred<ACMagazine>(MagazineClass, transform, nullptr, nullptr, ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
-	magazine->EnablePhysics();
+	magazine->Eject();
 	magazine->SetLifeSpan(5);
 	magazine->FinishSpawning(transform);
 }
@@ -457,8 +458,6 @@ void ACWeapon::Load_Magazine()
 void ACWeapon::End_Reload()
 {
 	bReload = false;
-
-
 }
 
 void ACWeapon::ToggleAutoFire()

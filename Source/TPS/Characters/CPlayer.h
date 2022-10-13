@@ -65,6 +65,9 @@ public:
 	FORCEINLINE float GetAimPitch() { return AimPitch; }
 	FORCEINLINE float GetAimYaw() { return AimYaw; }
 
+	FORCEINLINE class USkeletalMeshComponent * GetArms() { return Arms; }
+	FORCEINLINE class UStaticMeshComponent * GetBackpack() { return Backpack; }
+
 public:
 	ACPlayer();
 

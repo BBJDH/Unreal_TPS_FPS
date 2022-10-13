@@ -6,6 +6,7 @@
 
 #include "Weapons/CWeaponComponent.h"
 #include "CAnimInstance.h"
+#include "CAnimInstance_Arms.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
@@ -44,6 +45,10 @@ ACPlayer::ACPlayer()
 	GetMesh()->SetAnimClass(animInstance);
 
 
+	TSubclassOf<UCAnimInstance_Arms> armsAnimInstance;
+	CHelpers::GetClass<UCAnimInstance_Arms>(&armsAnimInstance, "AnimBlueprint'/Game/Player/ABP_Player_Arms.ABP_Player_Arms_C'");
+	GetMesh()->SetAnimClass(armsAnimInstance);
+
 	GetCharacterMovement()->MaxWalkSpeed = 300;
 
 	//SpringArm 조정, 총에 따라, 모드에 따라 변경
@@ -64,9 +69,12 @@ ACPlayer::ACPlayer()
 	CHelpers::GetAsset<USkeletalMesh>(&mesh, "SkeletalMesh'/Game/Character_Arms/Mesh/SK_Mannequin_Arms.SK_Mannequin_Arms'");
 	Arms->SetSkeletalMesh(mesh);
 	//임의값
-	Arms->SetRelativeLocation(FVector(-14.25f, -5.88f, -156.9f));
+	Arms->SetRelativeLocation(FVector(-14.25f, -5.90f, -156.94f));
 	Arms->SetRelativeRotation(FRotator(-0.5f, -11.85f, -1.2f));
 	Arms->SetVisibility(false);
+
+	//AnimBlueprint'/Game/Player/ABP_Player_Arms.ABP_Player_Arms'
+
 
 	UStaticMesh* staticMesh;
 	CHelpers::GetAsset<UStaticMesh>(&staticMesh, "StaticMesh'/Game/Weapons/Backpack/Backpack.Backpack'");

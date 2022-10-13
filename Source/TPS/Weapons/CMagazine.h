@@ -12,7 +12,15 @@ class TPS_API ACMagazine : public AActor
 
 private:
 	UPROPERTY(VisibleDefaultsOnly)
+		class USceneComponent* Root;
+
+	//Â÷ÀÖ´Â ÅºÃ¢
+	UPROPERTY(VisibleDefaultsOnly)
 		class UStaticMeshComponent* Mesh;
+
+	UPROPERTY(VisibleDefaultsOnly)
+		class UStaticMeshComponent* Mesh_Empty;
+
 	
 public:	
 	ACMagazine();
@@ -21,6 +29,9 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	void EnablePhysics();
+	void Eject();
+
+private:
+	bool bEject;
 
 };
