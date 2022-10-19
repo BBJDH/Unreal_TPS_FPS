@@ -170,6 +170,12 @@ FVector UCWeaponComponent::GetLeftHandLocation()
 	return GetCurrWeapon()->GetLeftHandLocation();
 }
 
+FTransform UCWeaponComponent::GetArmsLeftHandTransform()
+{
+	CheckNullResult(GetCurrWeapon(), FTransform());
+
+	return GetCurrWeapon()->GetArmsLeftHandTransform();
+}
 
 void UCWeaponComponent::Begin_Equip()
 {

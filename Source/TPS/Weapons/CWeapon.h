@@ -62,6 +62,15 @@ protected:
 
 
 protected:
+	UPROPERTY(EditAnyWhere, Category = "Arms")
+		FTransform ArmsMeshTransform;
+
+	UPROPERTY(EditAnyWhere, Category = "Arms")
+		FTransform ArmsLeftHandTransform;	//IK Æ®·£½º Æû
+
+
+
+protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Aiming")
 		class UCurveFloat* AimCurve;
 
@@ -170,6 +179,7 @@ public:
 	FORCEINLINE uint8 GetCurrMagazineCount() { return CurrMagazineCount; }
 	FORCEINLINE uint8 GetMaxMagazineCount() { return MaxMagazineCount; }
 
+	FORCEINLINE FTransform GetArmsLeftHandTransform() { return ArmsLeftHandTransform; }
 public:	
 	ACWeapon();
 

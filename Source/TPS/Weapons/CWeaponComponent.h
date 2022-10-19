@@ -64,6 +64,7 @@ public:
 	bool IsFiring();
 
 	FVector GetLeftHandLocation();
+	FTransform GetArmsLeftHandTransform();
 
 public:
 	void Begin_Equip();

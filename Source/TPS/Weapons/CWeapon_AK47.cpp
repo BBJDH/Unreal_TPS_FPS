@@ -60,6 +60,13 @@ ACWeapon_AK47::ACWeapon_AK47()
 	HolsterSocketName = "Rifle_AK47_Holster";
 	RightHandSocketName = "Rifle_AK47_RightHand";
 	LeftHandSocketName = "Rifle_AK47_LeftHand";
+
+
+	ArmsMeshTransform.SetLocation(FVector(-14.25f, -5.88f, -156.9f));
+	ArmsMeshTransform.SetRotation(FQuat(FRotator(-0.5f, -11.85f, -1.2f)));
+
+	ArmsLeftHandTransform.SetLocation(FVector(-33, 11.0f, -1.5f));
+	ArmsLeftHandTransform.SetRotation(FQuat(FRotator (-4, -138, 77)));
 	
 }
 
@@ -67,6 +74,9 @@ void ACWeapon_AK47::Begin_Equip()
 {
 	if (LeftHandSocketName.IsValid())
 		AttachToComponent(Owner->GetMesh(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, true), LeftHandSocketName);
+
+	Owner->GetArms()->SetRelativeTransform(ArmsMeshTransform);
+
 }
 void ACWeapon_AK47::End_Equip()
 {
