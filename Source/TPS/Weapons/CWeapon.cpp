@@ -42,7 +42,7 @@ void FWeaponAimData::SetDataByNoneCurve(ACharacter* InOwner)
 
 
 
-ACWeapon::ACWeapon()
+ACWeapon::ACWeapon():ArmsLeftHandTransform{}
 {
 	PrimaryActorTick.bCanEverTick = true;
 
@@ -56,14 +56,12 @@ ACWeapon::ACWeapon()
 	CHelpers::GetAsset<UMaterialInstanceConstant>(&HitDecal, "MaterialInstanceConstant'/Game/Materials/M_Decal_Inst.M_Decal_Inst'");
 	CHelpers::GetAsset<UParticleSystem>(&HitParticle, "ParticleSystem'/Game/Effects/P_Impact_Default.P_Impact_Default'");
 
-
 	CHelpers::GetClass<UCUserWidget_CrossHair>(&CrossHairClass, "WidgetBlueprint'/Game/Widgets/WB_CrossHair.WB_CrossHair_C'");
 
 	CHelpers::GetAsset<UParticleSystem>(&EjectParticle, "ParticleSystem'/Game/Effects/P_Eject_bullet.P_Eject_bullet'");
 	CHelpers::GetAsset<UParticleSystem>(&FlashParticle, "ParticleSystem'/Game/Effects/P_Muzzleflash.P_Muzzleflash'");
 
 	CHelpers::GetAsset<USoundWave>(&FireSound, "SoundWave'/Game/Sounds/S_RifleShoot.S_RifleShoot'");
-
 
 	CHelpers::GetClass<ACBullet>(&BulletClass, "Blueprint'/Game/Guns/BP_CBullet.BP_CBullet_C'");
 

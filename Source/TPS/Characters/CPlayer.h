@@ -2,11 +2,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
+#include "Characters/CCharacter.h"
 #include "CPlayer.generated.h"
 
+
+
+
 UCLASS()
-class TPS_API ACPlayer : public ACharacter
+class TPS_API ACPlayer : public ACCharacter
 {
 	GENERATED_BODY()
 
@@ -55,8 +58,7 @@ private:
 	UPROPERTY(VisibleDefaultsOnly)
 		class UStaticMeshComponent* Backpack;
 
-	UPROPERTY(VisibleDefaultsOnly)
-		class UCWeaponComponent* Weapon;
+
 
 public:
 

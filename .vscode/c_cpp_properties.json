@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "TPSEditor Editor Win64 Development (TPS)",
+            "intelliSenseMode": "msvc-x64",
+            "compileCommands": "D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS.json",
+            "cStandard": "c17",
+            "cppStandard": "c++17"
+        },
+        {
+            "name": "Win32",
+            "intelliSenseMode": "msvc-x64",
+            "compileCommands": "D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_Default.json",
+            "cStandard": "c17",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

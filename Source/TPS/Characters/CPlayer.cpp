@@ -4,16 +4,13 @@
 #include "Global.h"
 
 
-#include "Weapons/CWeaponComponent.h"
-#include "CAnimInstance.h"
 #include "CAnimInstance_Arms.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
-#include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
-
+#include "Weapons/CWeaponComponent.h"
 
 
 ACPlayer::ACPlayer()
@@ -27,11 +24,6 @@ ACPlayer::ACPlayer()
 	CHelpers::CreateComponent<USkeletalMeshComponent>(this, &Arms, "Arms", Camera);
 	CHelpers::CreateComponent<UStaticMeshComponent>(this, &Backpack, "Backpack", GetMesh(), "Backpack");
 
-
-	CHelpers::CreateActorComponent<UCWeaponComponent>(this, &Weapon, "Weapon");
-
-
-	//메시
 	USkeletalMesh* mesh;
 	//SkeletalMesh'/Game/Character/Mesh/SK_Mannequin.SK_Mannequin'
 	CHelpers::GetAsset<USkeletalMesh>(&mesh, "SkeletalMesh'/Game/Character/Mesh/SK_Mannequin.SK_Mannequin'");
@@ -39,17 +31,11 @@ ACPlayer::ACPlayer()
 	GetMesh()->SetRelativeLocation(FVector(0, 0, -90));
 	GetMesh()->SetRelativeRotation(FRotator(0, -90, 0));
 
-	//AnimInstance 결합
-	TSubclassOf<UCAnimInstance> animInstance;
-	CHelpers::GetClass<UCAnimInstance>(&animInstance, "AnimBlueprint'/Game/ABP_Player.ABP_Player_C'");
-	GetMesh()->SetAnimClass(animInstance);
-
-
 	TSubclassOf<UCAnimInstance_Arms> armsAnimInstance;
 	CHelpers::GetClass<UCAnimInstance_Arms>(&armsAnimInstance, "AnimBlueprint'/Game/Player/ABP_Player_Arms.ABP_Player_Arms_C'");
 	GetMesh()->SetAnimClass(armsAnimInstance);
 
-	GetCharacterMovement()->MaxWalkSpeed = 300;
+
 
 	//SpringArm 조정, 총에 따라, 모드에 따라 변경
 	SpringArm->SetRelativeLocation(FVector(0, 0, 150));
@@ -142,7 +128,6 @@ void ACPlayer::OnMoveForward(float AxisValue)
 {
 	FRotator rotator = FRotator(0, GetControlRotation().Yaw, 0);
 	FVector direction = FQuat(rotator).GetForwardVector().GetSafeNormal2D();
-
 	AddMovementInput(direction, AxisValue);
 }
 
@@ -157,7 +142,6 @@ void ACPlayer::OnMoveRight(float AxisValue)
 void ACPlayer::OnVerticalLook(float AxisValue)
 {
 	FRotator controlRotation = GetControlRotation().GetNormalized();
-	//CLog::Log("dd");
 	float limitPitch = controlRotation.Pitch;
 
 	CheckTrue(limitPitch > LimitPitchAngle);

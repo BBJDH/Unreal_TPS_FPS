@@ -28,7 +28,6 @@ ACWeapon_Pistol::ACWeapon_Pistol()
 	//Aim
 	AimData.TargetArmLength = 30;
 	AimData.SocketOffset = FVector(-55, 0, 10);
-	//AimData.FieldOfView = 55;
 	AimData.FieldOfView = 55;
 
 
@@ -58,13 +57,18 @@ ACWeapon_Pistol::ACWeapon_Pistol()
 
 	ArmsLeftHandTransform.SetLocation(FVector(0, 11, 0));
 	ArmsLeftHandTransform.SetRotation(FQuat(FRotator(0, 180, 180)));
+	//CLog::Print(ArmsLeftHandTransform.GetLocation());
+	//CLog::Print(FRotator(ArmsLeftHandTransform.GetRotation()));
 
+	bAutoFire = false;
 
 	RecoilAngle = 1.5f;
-	MaxSpreadAlignment = 4;
-	SpreadSpeed = 4;
+	MaxSpreadAlignment = 8;
+	SpreadSpeed = 8;
 
 	MaxMagazineCount = 5;
+
+	AutoFireInterval = 0.3f;
 
 }
 
@@ -79,18 +83,38 @@ void ACWeapon_Pistol::Begin_Equip()
 	Super::Begin_Equip();
 	Mesh->SetVisibility(true);
 
-	Owner->GetArms()->SetRelativeTransform(ArmsLeftHandTransform);
-
-	//if (LeftHandSocketName.IsValid())
-	//	AttachToComponent(Owner->GetMesh(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, true), LeftHandSocketName);
-
+	Owner->GetArms()->SetRelativeTransform(ArmsMeshTransform);
 }
 
 void ACWeapon_Pistol::Begin_Aim()
 {
+	Super::Begin_Aim();
+	if (!!CrossHair)
+		CrossHair->SetVisibility(ESlateVisibility::Hidden);
 
+	Owner->GetArms()->SetVisibility(true);
+	Owner->GetMesh()->SetVisibility(false);
+	Owner->GetBackpack()->SetVisibility(false);
+
+	AttachToComponent(Owner->GetArms(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, true), RightHandSocketName);
+
+	CHelpers::GetComponent<UCWeaponComponent>(Owner)->OnWeaponAim_Arms_Begin.Broadcast(this);
+	//CLog::Print(ArmsLeftHandTransform.GetLocation());
+	//CLog::Print(FRotator(ArmsLeftHandTransform.GetRotation()));
 }
 void ACWeapon_Pistol::End_Aim()
 {
+	Super::End_Aim();
 
+
+	if (!!CrossHair)
+		CrossHair->SetVisibility(ESlateVisibility::Visible);
+
+	Owner->GetArms()->SetVisibility(false);
+	Owner->GetMesh()->SetVisibility(true);
+	Owner->GetBackpack()->SetVisibility(true);
+
+	AttachToComponent(Owner->GetMesh(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, true), RightHandSocketName);
+
+	CHelpers::GetComponent<UCWeaponComponent>(Owner)->OnWeaponAim_Arms_End.Broadcast();
 }

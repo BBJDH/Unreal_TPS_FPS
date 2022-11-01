@@ -245,6 +245,8 @@ private:
 	bool bInAim;
 	bool bFiring;
 	bool bReload;
+
+protected:
 	bool bAutoFire = true;
 
 

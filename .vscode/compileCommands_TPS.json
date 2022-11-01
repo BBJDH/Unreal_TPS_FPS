@@ -1,0 +1,207 @@
+[
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\CGameMode.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\CGameMode.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Characters\\\\CAnimInstance.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Characters\\\\CAnimInstance.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Characters\\\\CAnimInstance_Arms.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Characters\\\\CAnimInstance_Arms.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Characters\\\\CCharacter.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Characters\\\\CCharacter.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Characters\\\\CPlayer.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Characters\\\\CPlayer.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Global.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Notifies\\\\CAnimNotify_Reload.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Notifies\\\\CAnimNotify_Reload.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Notifies\\\\CAnimNotifyState_Equip.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Notifies\\\\CAnimNotifyState_Equip.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Notifies\\\\CAnimNotifyState_Reload.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Notifies\\\\CAnimNotifyState_Reload.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\TPS.Build.cs",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\TPS.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\TPS.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Utilities\\\\CHelpers.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Utilities\\\\CLog.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Utilities\\\\CLog.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Weapons\\\\CBullet.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Weapons\\\\CBullet.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Weapons\\\\CMagazine.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Weapons\\\\CMagazine.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Weapons\\\\CWeapon.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Weapons\\\\CWeapon.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Weapons\\\\CWeapon_AK47.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Weapons\\\\CWeapon_AK47.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Weapons\\\\CWeapon_AR4.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Weapons\\\\CWeapon_AR4.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Weapons\\\\CWeapon_Pistol.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Weapons\\\\CWeapon_Pistol.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Weapons\\\\CWeaponComponent.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Weapons\\\\CWeaponComponent.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Widgets\\\\CUserWidget_CrossHair.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Widgets\\\\CUserWidget_CrossHair.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Widgets\\\\CUserWidget_HUD.cpp",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Workspace\\\\BB_Unreal\\\\Unreal_CPP_Basic\\\\TPS\\\\Source\\\\TPS\\\\Widgets\\\\CUserWidget_HUD.h",
+		"command": "cl.exe @\"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\.vscode\\compileCommands_TPS\\TPS.182.rsp\"",
+		"directory": "C:\\Unreal\\UE_4.26\\Engine\\Source"
+	}
+]
