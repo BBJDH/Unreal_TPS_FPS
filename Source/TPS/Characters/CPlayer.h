@@ -30,19 +30,9 @@ class TPS_API ACPlayer : public ACCharacter
 
 
 private:
-	UPROPERTY(EditDefaultsOnly, Category = "Camera")
-		float ViewInterpSpeed = 25;
 
-	//위아래 각도 제한
-	UPROPERTY(EditDefaultsOnly, Category = "Camera")
-		FVector2D PitchRange = FVector2D(-75, +40);
-
-	//좌우 각도 제한
-	UPROPERTY(EditDefaultsOnly, Category = "Camera")
-		FVector2D YawRange = FVector2D(-90, +90);
-
-	UPROPERTY(EditDefaultsOnly, Category = "Camera")
-		float LimitPitchAngle = 40;	//최대 누적 반동각
+	// UPROPERTY(EditDefaultsOnly, Category = "Camera")
+	// 	float LimitPitchAngle = 40;	//최대 누적 반동각
 
 private:
 	UPROPERTY(VisibleDefaultsOnly)
@@ -62,11 +52,6 @@ private:
 
 public:
 
-
-
-	FORCEINLINE float GetAimPitch() { return AimPitch; }
-	FORCEINLINE float GetAimYaw() { return AimYaw; }
-
 	FORCEINLINE class USkeletalMeshComponent * GetArms() { return Arms; }
 	FORCEINLINE class UStaticMeshComponent * GetBackpack() { return Backpack; }
 
@@ -77,8 +62,6 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	virtual void Tick(float DeltaTime) override;
-
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
@@ -92,10 +75,7 @@ public:
 	void UseControlRotation();
 	void NotUseControlRotation();
 
-	//에임오프셋 2D라면 두가지 (AimYaw 까지) 사용
-private:
-	float AimYaw;
-	float AimPitch;
+
 
 	//플레이어가 들고다닐 라이플 포인터(하위 Rifle)
 

@@ -15,7 +15,6 @@
 
 ACPlayer::ACPlayer()
 {
-	PrimaryActorTick.bCanEverTick = true;
 
 	//스프링, 카메라 생성
 	CHelpers::CreateComponent<USpringArmComponent>(this, &SpringArm, "SpringArm", GetMesh());
@@ -79,22 +78,7 @@ void ACPlayer::BeginPlay()
 
 }
 
-void ACPlayer::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
 
-	FRotator prev = FRotator(AimPitch, AimYaw, 0);
-
-	//A,B A-B의 각도 , A 컨트롤로테이션, B액터 로테이션
-	//-180 ~ 180으로 정규화
-	FRotator curr = UKismetMathLibrary::NormalizedDeltaRotator(GetControlRotation(), GetActorRotation());
-
-	//SLerp 쿼터니온의 Lerp
-	FRotator delta = UKismetMathLibrary::RInterpTo(prev,curr,DeltaTime,ViewInterpSpeed);
-
-	AimPitch = FMath::Clamp(delta.Pitch, PitchRange.X, PitchRange.Y);
-	AimPitch = FMath::Clamp(delta.Pitch, YawRange.X, YawRange.Y);
-}
 
 void ACPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -141,10 +125,10 @@ void ACPlayer::OnMoveRight(float AxisValue)
 
 void ACPlayer::OnVerticalLook(float AxisValue)
 {
-	FRotator controlRotation = GetControlRotation().GetNormalized();
-	float limitPitch = controlRotation.Pitch;
+	// FRotator controlRotation = GetControlRotation().GetNormalized();
+	// float limitPitch = controlRotation.Pitch;
 
-	CheckTrue(limitPitch > LimitPitchAngle);
+	// CheckTrue(limitPitch > LimitPitchAngle);
 	AddControllerPitchInput(AxisValue);
 }
 

@@ -5,7 +5,7 @@
 			"name": "TPS (Debug)",
 			"request": "launch",
 			"preLaunchTask": "TPS Win64 Debug Build",
-			"program": "D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\Binaries\\Win64\\UE4-Win64-Debug.exe",
+			"program": "D:\\Workspace\\Unreal\\CPP_Basic\\TPS_FPS\\Binaries\\Win64\\UE4-Win64-Debug.exe",
 			"args": [
 			],
 			"cwd": "C:\\Unreal\\UE_4.26",
@@ -18,7 +18,7 @@
 			"name": "TPS (DebugGame)",
 			"request": "launch",
 			"preLaunchTask": "TPS Win64 DebugGame Build",
-			"program": "D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\Binaries\\Win64\\UE4-Win64-DebugGame.exe",
+			"program": "D:\\Workspace\\Unreal\\CPP_Basic\\TPS_FPS\\Binaries\\Win64\\UE4-Win64-DebugGame.exe",
 			"args": [
 			],
 			"cwd": "C:\\Unreal\\UE_4.26",
@@ -31,7 +31,7 @@
 			"name": "TPS (Development)",
 			"request": "launch",
 			"preLaunchTask": "TPS Win64 Development Build",
-			"program": "D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\Binaries\\Win64\\UE4.exe",
+			"program": "D:\\Workspace\\Unreal\\CPP_Basic\\TPS_FPS\\Binaries\\Win64\\UE4.exe",
 			"args": [
 			],
 			"cwd": "C:\\Unreal\\UE_4.26",
@@ -44,7 +44,7 @@
 			"name": "TPS (Shipping)",
 			"request": "launch",
 			"preLaunchTask": "TPS Win64 Shipping Build",
-			"program": "D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\Binaries\\Win64\\UE4-Win64-Shipping.exe",
+			"program": "D:\\Workspace\\Unreal\\CPP_Basic\\TPS_FPS\\Binaries\\Win64\\UE4-Win64-Shipping.exe",
 			"args": [
 			],
 			"cwd": "C:\\Unreal\\UE_4.26",
@@ -57,7 +57,7 @@
 			"name": "TPS (Test)",
 			"request": "launch",
 			"preLaunchTask": "TPS Win64 Test Build",
-			"program": "D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\Binaries\\Win64\\UE4-Win64-Test.exe",
+			"program": "D:\\Workspace\\Unreal\\CPP_Basic\\TPS_FPS\\Binaries\\Win64\\UE4-Win64-Test.exe",
 			"args": [
 			],
 			"cwd": "C:\\Unreal\\UE_4.26",
@@ -72,7 +72,7 @@
 			"preLaunchTask": "TPSEditor Win64 Debug Build",
 			"program": "C:\\Unreal\\UE_4.26\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe",
 			"args": [
-				"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\TPS.uproject"
+				"D:\\Workspace\\Unreal\\CPP_Basic\\TPS_FPS\\TPS.uproject"
 			],
 			"cwd": "C:\\Unreal\\UE_4.26",
 			"stopAtEntry": false,
@@ -86,7 +86,7 @@
 			"preLaunchTask": "TPSEditor Win64 DebugGame Build",
 			"program": "C:\\Unreal\\UE_4.26\\Engine\\Binaries\\Win64\\UE4Editor-Win64-DebugGame.exe",
 			"args": [
-				"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\TPS.uproject"
+				"D:\\Workspace\\Unreal\\CPP_Basic\\TPS_FPS\\TPS.uproject"
 			],
 			"cwd": "C:\\Unreal\\UE_4.26",
 			"stopAtEntry": false,
@@ -100,7 +100,7 @@
 			"preLaunchTask": "TPSEditor Win64 Development Build",
 			"program": "C:\\Unreal\\UE_4.26\\Engine\\Binaries\\Win64\\UE4Editor.exe",
 			"args": [
-				"D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\TPS.uproject"
+				"D:\\Workspace\\Unreal\\CPP_Basic\\TPS_FPS\\TPS.uproject"
 			],
 			"cwd": "C:\\Unreal\\UE_4.26",
 			"stopAtEntry": false,
@@ -117,7 +117,7 @@
 			"args": [
 				"-projectfiles",
 				"-vscode",
-				"-project=D:\\Workspace\\BB_Unreal\\Unreal_CPP_Basic\\TPS\\TPS.uproject",
+				"-project=D:\\Workspace\\Unreal\\CPP_Basic\\TPS_FPS\\TPS.uproject",
 				"-game",
 				"-engine"
 			],
